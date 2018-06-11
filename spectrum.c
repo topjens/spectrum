@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 #define NUM_POINTS 13
 #define NUM_PARAMETERS 6
@@ -30,9 +31,7 @@ void calculate_fs(int n, double *f, double *beta)
       max = f[i];
 
   for(i = 0; i < n; i++) {
-    printf("f[i] before is %f, ", f[i]);
     f[i] /= max / 100.;
-    printf("after is %f.\n", f[i]);
   }
     
 }
@@ -52,16 +51,34 @@ double sum_of_squares(int n, double *y, double *f)
 int main(int argc, char *argv[])
 {
   double y[NUM_POINTS] = {13.63636364,17.27272727,56.36363636,32.72727273,100,47.27272727,75.45454545,47.27272727,45.45454545,20.90909091,9.090909091,5.454545455,2.727272727};
-  //double beta[NUM_PARAMETERS] = {1.0, 0.4, 1.0, 0.1, 1.0, 0.4};
   double beta[NUM_PARAMETERS] = {1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
+  int i, j, k, l, m, n;
+  double s, min = INFINITY;
 
   double *f = malloc(NUM_POINTS * sizeof *f);
-
-  calculate_fs(NUM_POINTS, f, beta);
   
-  double s = sum_of_squares(15, y, f);
+  for(i = 0; i < 10; i++)
+	  for(j = 0; j < 10; j++)
+		  for(k = 0; k < 10; k++)
+			  for(l = 0; l < 10; l++)
+				  for(m = 0; m < 10; m++)
+					  for(n = 0; n < 10; n++) {
+						  beta[0] = n*0.1;
+						  beta[1] = m*0.1;
+						  beta[2] = l*0.1;
+						  beta[3] = k*0.1;
+						  beta[4] = j*0.1;
+						  beta[5] = i*0.1;
+							  
+						  calculate_fs(NUM_POINTS, f, beta);
+						  s = sum_of_squares(15, y, f);
+						  if(s < min) {
+							  min = s;
+							  printf("Minimum X^2=%f beta=%f %f %f %f %f %f\n", min, beta[0], beta[1], beta[2], beta[3], beta[4], beta[5]);
+						  }
+					  }
 
-  printf("%f\n", s);
+  //printf("%f\n", s);
 
   free(f);
 }
