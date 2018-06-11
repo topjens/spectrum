@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+double sum_of_square(int n, double *y)
+{
+  return 0.;
+}
+
+int main(int argc, char *argv[])
+{
+  double *y = malloc(15 * sizeof *y);
+  
+  double s = sum_of_squares(15, y);
+
+  printf("%f\n", s);
+
+  free(y);
+}
