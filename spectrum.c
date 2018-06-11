@@ -55,18 +55,18 @@ int main(int argc, char *argv[])
 
   double *f = malloc(NUM_POINTS * sizeof(double));
   
-  for(i = 0; i < 10; i++)
-	  for(j = 0; j < 10; j++)
-		  for(k = 0; k < 10; k++)
-			  for(l = 0; l < 10; l++)
-				  for(m = 0; m < 10; m++)
-					  for(n = 0; n < 10; n++) {
-						  beta[0] = n*0.1;
-						  beta[1] = m*0.1;
-						  beta[2] = l*0.1;
-						  beta[3] = k*0.1;
-						  beta[4] = j*0.1;
-						  beta[5] = i*0.1;
+  for(i = 0; i < 100; i++)
+	  for(j = 0; j < 100; j++)
+		  for(k = 0; k < 100; k++)
+			  for(l = 0; l < 100; l++)
+				  for(m = 0; m < 100; m++)
+					  for(n = 0; n < 100; n++) {
+						  beta[0] = n*0.01;
+						  beta[1] = m*0.01;
+						  beta[2] = l*0.01;
+						  beta[3] = k*0.01;
+						  beta[4] = j*0.01;
+						  beta[5] = i*0.01;
 							  
 						  calculate_fs(NUM_POINTS, f, beta);
 						  s = sum_of_squares(NUM_POINTS, y, f);
