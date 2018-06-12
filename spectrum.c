@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
 
   double *f = malloc(NUM_POINTS * sizeof(double));
   
-  for(i = 0; i < 100; i++)
+  /*  for(i = 0; i < 100; i++)
 	  for(j = 0; j < 100; j++)
 		  for(k = 0; k < 100; k++)
 			  for(l = 0; l < 100; l++)
@@ -74,9 +74,19 @@ int main(int argc, char *argv[])
 							  min = s;
 							  printf("Minimum X^2=%f beta=%f %f %f %f %f %f\n", min, beta[0], beta[1], beta[2], beta[3], beta[4], beta[5]);
 						  }
-					  }
+						  }*/
 
-  //printf("%f\n", s);
+  beta[0] = 0.3498;
+  beta[1] = 0.1063;
+  beta[2] = 0.5382;
+  beta[3] = -0.1395;
+  beta[4] = 0.2453;
+  beta[5] = 0.1378;
+  
+  calculate_fs(NUM_POINTS, f, beta);
+  s = sum_of_squares(NUM_POINTS, y, f);
+
+  printf("%f\n", s);
 
   free(f);
 }
